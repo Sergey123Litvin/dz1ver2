@@ -28,3 +28,10 @@ alert( `привіт ${1}` ); // привіт 1
 alert( `привіт ${"name"}` ); // привіт name
 
 alert( `привіт ${name2}` ); // ? привіт Ілля
+
+//Task 2.6
+
+let name3;
+
+name3 = prompt('Як Вас звати?');
+alert(name3);
