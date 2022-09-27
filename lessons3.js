@@ -184,17 +184,17 @@
             
     //Один доллар стоит 27 гривен. Вывести данные с расчетом стоимости 10, 20, 30... 100 долларов
 
-        function exchange (a, b, step, exchangeRate) {
-            let result = '';
+        // function exchange (a, b, step, exchangeRate) {
+        //     let result = '';
 
-            for(let i = a; i <= b; i = i + step) {
-                result = result + `
-                стоимость ${i} долларов = ${i * exchangeRate} гривен`            
-            }
-            console.log(result);
-        }
+        //     for(let i = a; i <= b; i = i + step) {
+        //         result = result + `
+        //         стоимость ${i} долларов = ${i * exchangeRate} гривен`            
+        //     }
+        //     console.log(result);
+        // }
 
-        exchange(10, 100, 10, 27); 
+        // exchange(10, 100, 10, 27); 
 
     //Дано целое число. Вывести все целые числа от 1 до 100, квадрат которых не превышает числа N
 
@@ -226,13 +226,17 @@
 
     //Дано некоторое число. Определить, можно ли получить это число путем возведения числа 3 в некоторую степень. (Например, числа 9, 81 можно получить, а 13 - нельзя)
 
-        // let number = +prompt('Введите число');
-    
-        // for (let i = 1; i < 1000; i++){
-        //     let degree = Math.pow(3, i);
-        //     if(degree === number){
-        //         alert(`Данное число можна получить путем возведения числа 3 в ${i} степень`);
-        //     } else if(degree > number){
-        //         alert(`Данное число нельзя получить рутем возведения числа 3 в степень`);
-        //     }
-        // }
+        let number = +prompt('Введите число'),
+            degree = 1,
+            now = 1,
+            result ='';
+        while (now <= number){
+            if(now === number){
+                result = `Число ${number} можна получить путем возведения числа 3 в ${degree - 1} степень`;
+            } else if(now !== number){
+                result = `Число ${number} нельзя получить путем возведения числа 3 в степень`;  
+            } 
+            now = Math.pow(3, degree);
+            degree++;
+        }
+        alert(result);
