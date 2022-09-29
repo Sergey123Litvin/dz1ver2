@@ -14,6 +14,20 @@
     // let numOrStr = prompt('input number or string');
     // console.log(numOrStr);
 
+    // switch (isNaN(+numOrStr) || numOrStr || numOrStr.trim()) {
+    //     case null:
+    //         console.log('вы отменили');
+    //         break;
+    //     case '':
+    //         console.log('Empty String');
+    //         break;
+    //     case true:
+    //         console.log(' number is Ba_NaN');
+    //         break;
+    //     default:
+    //         console.log('OK!');
+    // }
+
     // switch (true) {
     //     case numOrStr === null: 
     //         console.log('вы отменили');
@@ -94,7 +108,7 @@
         //         result = result + i;
         //         iter++
         //     }
-        //     console.log(`${result / iter}`);
+        //     console.log(result / iter);
         // }
 
         // average(1, 500);
@@ -112,6 +126,17 @@
         // }
 
         // sum(30, 80);
+
+        // function sum (a, b) {
+        //     let result = 0;
+        //     for (let i = a; i <= b; i = i + 2) {
+        //             result = result + i;
+        //     }
+        //     console.log(result);
+        // }
+
+        // sum(30, 80);
+
 
     //Вывести все числа в диапазоне от 100 до 200 кратные 3
 
@@ -226,17 +251,24 @@
 
     //Дано некоторое число. Определить, можно ли получить это число путем возведения числа 3 в некоторую степень. (Например, числа 9, 81 можно получить, а 13 - нельзя)
 
-        let number = +prompt('Введите число'),
-            degree = 1,
-            now = 1,
-            result ='';
-        while (now <= number){
-            if(now === number){
-                result = `Число ${number} можна получить путем возведения числа 3 в ${degree - 1} степень`;
-            } else if(now !== number){
-                result = `Число ${number} нельзя получить путем возведения числа 3 в степень`;  
-            } 
-            now = Math.pow(3, degree);
-            degree++;
-        }
-        alert(result);
+        // let number = +prompt('Введите число'),
+        //     degree = 0,
+        //     now = 1,
+        //     result ='';
+        // while (now <= number){
+        //     if(now === number){
+        //         result = `Число ${number} можна получить путем возведения числа 3 в ${degree} степень`;
+        //     } else if(now !== number){
+        //         result = `Число ${number} нельзя получить путем возведения числа 3 в степень`; 
+        //     } 
+        //     degree++; 
+        //     now = Math.pow(3, degree);
+        // }
+        // alert(result);
+        
+
+
+
+
+
+
