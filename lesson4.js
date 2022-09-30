@@ -108,74 +108,88 @@
        
     //Дан массив объектов. Вывести массив телефонных номеров пользователей, у которых баланс более 2000 долларов. И найти сумму всех балансов пользователей
 
-        let users = [
-            {
-            "index": 0,
-            "isActive": true,
-            "balance": "$2,226.60",
-            "name": "Eugenia Sawyer",
-            "gender": "female",
-            "phone": "+1 (840) 583-3207",
-            "address": "949 John Street, Rose, Puerto Rico, 1857"
-            },
-            {
-            "index": 1,
-            "isActive": true,
-            "balance": "$2,613.77",
-            "name": "Pauline Gallegos",
-            "gender": "female",
-            "phone": "+1 (985) 593-3328",
-            "address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"
-            },
-            {
-            "index": 2,
-            "isActive": false,
-            "balance": "$3,976.41",
-            "name": "Middleton Chaney",
-            "gender": "male",
-            "phone": "+1 (995) 591-2478",
-            "address": "807 Fleet Walk, Brutus, Arkansas, 9783"
-            },
-            {
-            "index": 3,
-            "isActive": true,
-            "balance": "$1,934.58",
-            "name": "Burns Poole",
-            "gender": "male",
-            "phone": "+1 (885) 559-3422",
-            "address": "730 Seba Avenue, Osage, Alabama, 6290"
-            },
-            {
-            "index": 4,
-            "isActive": true,
-            "balance": "$3,261.65",
-            "name": "Mcfadden Horne",
-            "gender": "male",
-            "phone": "+1 (942) 565-3988",
-            "address": "120 Scholes Street, Kirk, Michigan, 1018"
-            },
-            {
-            "index": 5,
-            "isActive": false,
-            "balance": "$1,790.56",
-            "name": "Suzette Lewis",
-            "gender": "female",
-            "phone": "+1 (837) 586-3283",
-            "address": "314 Dunne Place, Bawcomville, Guam, 9053"
-            }
-            ]
+        // let users = [
+        //     {
+        //     "index": 0,
+        //     "isActive": true,
+        //     "balance": "$2,226.60",
+        //     "name": "Eugenia Sawyer",
+        //     "gender": "female",
+        //     "phone": "+1 (840) 583-3207",
+        //     "address": "949 John Street, Rose, Puerto Rico, 1857"
+        //     },
+        //     {
+        //     "index": 1,
+        //     "isActive": true,
+        //     "balance": "$2,613.77",
+        //     "name": "Pauline Gallegos",
+        //     "gender": "female",
+        //     "phone": "+1 (985) 593-3328",
+        //     "address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"
+        //     },
+        //     {
+        //     "index": 2,
+        //     "isActive": false,
+        //     "balance": "$3,976.41",
+        //     "name": "Middleton Chaney",
+        //     "gender": "male",
+        //     "phone": "+1 (995) 591-2478",
+        //     "address": "807 Fleet Walk, Brutus, Arkansas, 9783"
+        //     },
+        //     {
+        //     "index": 3,
+        //     "isActive": true,
+        //     "balance": "$1,934.58",
+        //     "name": "Burns Poole",
+        //     "gender": "male",
+        //     "phone": "+1 (885) 559-3422",
+        //     "address": "730 Seba Avenue, Osage, Alabama, 6290"
+        //     },
+        //     {
+        //     "index": 4,
+        //     "isActive": true,
+        //     "balance": "$3,261.65",
+        //     "name": "Mcfadden Horne",
+        //     "gender": "male",
+        //     "phone": "+1 (942) 565-3988",
+        //     "address": "120 Scholes Street, Kirk, Michigan, 1018"
+        //     },
+        //     {
+        //     "index": 5,
+        //     "isActive": false,
+        //     "balance": "$1,790.56",
+        //     "name": "Suzette Lewis",
+        //     "gender": "female",
+        //     "phone": "+1 (837) 586-3283",
+        //     "address": "314 Dunne Place, Bawcomville, Guam, 9053"
+        //     }
+        //     ]
         
-        let usersPhone = [],
-            userBalance,
-            sumUserBalance = 0;
+        // let usersPhone = [],
+        //     userBalance,
+        //     sumUserBalance = 0;
 
-        users.forEach(user =>{
-            userBalance = +user.balance.replace(/[^0-9.]/g,'');  //удаляем все элементы в строке кроме цифр и точек и переводим в числовой тип
-            sumUserBalance += userBalance;
-            if(userBalance > 2000){
-                usersPhone.push(user.phone);
-            }
-        });
+        // users.forEach(user =>{
+        //     userBalance = +user.balance.replace(/[^0-9.]/g,'');  //удаляем все элементы в строке кроме цифр и точек и переводим в числовой тип
+        //     sumUserBalance += userBalance;
+        //     if(userBalance > 2000){
+        //         usersPhone.push(user.phone);
+        //     }
+        // });
 
-        console.log(usersPhone);
-        console.log(`Сумма всех балансов пользователей: $ ${sumUserBalance.toFixed(2)}`); // Округляем число до 2го знака после запятой
+        // console.log(usersPhone);
+        // console.log(`Сумма всех балансов пользователей: $ ${sumUserBalance.toFixed(2)}`); // Округляем число до 2го знака после запятой
+
+
+// ДЗ 12. Реализуйте функцию removeElement
+    // Реализуйте функцию removeElement(array, item), чтобы удалить элемент item из массива array.
+
+        const arr = [1, 2, 3, 4, 5, 6, 7];
+    
+        function removeElement(array, item) {
+            array.splice(item - 1, 1);
+        };
+
+        removeElement(arr, 5);
+        console.log(arr);
+
