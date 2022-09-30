@@ -87,15 +87,15 @@
     // // Найти наибольший среди элементов массива, остальные обнулить.
 
     //     let bigElem = arr[0],
-    //         bigElemIndex;
+    //         bigElemIndex = 0;
 
-    //     arr.forEach(elem =>{
-    //         if(bigElem < elem){
-    //             bigElem = elem;
-    //         }
-    //     });
-    //     bigElemIndex = arr.indexOf(bigElem);
-        
+    //         arr.find((elem, index) =>{
+    //             if(bigElem < elem){
+    //                 bigElem = elem;
+    //                 bigElemIndex = index;
+    //             }
+    //         });
+
     //     for (let i = 0; i < arr.length; i++){
     //         if(i !== bigElemIndex){
     //             arr[i] = 0;
@@ -178,18 +178,104 @@
         // });
 
         // console.log(usersPhone);
-        // console.log(`Сумма всех балансов пользователей: $ ${sumUserBalance.toFixed(2)}`); // Округляем число до 2го знака после запятой
+        // console.log(`Сумма всех балансов пользователей: $ ${sumUserBalance.toFixed(2)}`); // Округляем число до 2го знака после точки
 
 
 // ДЗ 12. Реализуйте функцию removeElement
     // Реализуйте функцию removeElement(array, item), чтобы удалить элемент item из массива array.
 
-        const arr = [1, 2, 3, 4, 5, 6, 7];
+        // const arr = [1, 2, 3, 4, 5, 6, 7];
     
-        function removeElement(array, item) {
-            array.splice(item - 1, 1);
-        };
+        // function removeElement(array, item) {
+        //     array.splice(item - 1, 1);
+        // };
 
-        removeElement(arr, 5);
-        console.log(arr);
+        // removeElement(arr, 5);
+        // console.log(arr);
 
+
+// ДЗ 13. Написать несколько функций
+
+    // -Дан массив с элементами разных типов. Создать функцию которая высчитывает среднее арифметическое только числовых элементов данного массива.
+
+        // const arr  = ['rag',14,'4gre',83,'rg',false,true,'rseh',24,25];
+
+        // function averageNumberArr(arr) {
+        //     let sumNumber = 0,
+        //         colNumber = 0;
+        //     arr.forEach(elem => {
+        //         if(typeof elem === 'number'){
+        //             sumNumber += elem;
+        //             colNumber++;
+        //         }
+        //     });
+        //     console.log(`Среднее арифметическое чисел из данного массива: ${sumNumber/colNumber}`);
+        // }
+
+        // averageNumberArr(arr);
+
+    // -Написать функцию doMath(x, znak, y), которая получает 3 аргумента: числа x и y, строку znak. В переменной znak может быть: +, -, *, /, %, ^ (степень). Вывести результат математического действия, указанного в переменной znak. Оба числа и знак получаются от пользователя.
+
+        // let x = +prompt('Введите первое число'),
+        //     znak = prompt('Введите знак операции, которую хотите произвести: +, -, *, /, %, ^');
+        //     y = +prompt('Введите второе число');
+        
+        // function doMath(x, znak, y){
+        //     if(znak === '+'){
+        //         alert(x + y);
+        //     }else if(znak === '-'){
+        //         alert(x - y);
+        //     }else if(znak === '*'){
+        //         alert(x * y);
+        //     }else if(znak === '/'){
+        //         alert(x / y);
+        //     }else if(znak === '%'){
+        //         alert(x % y);
+        //     }else if(znak === '^'){
+        //         alert(Math.pow(x, y))
+        //     }
+        // }
+
+        // doMath(x, znak, y);
+
+    // -Написать функцию заполнения пользовательскими данными двумерного массива. Длину основного массива и внутренних массивов задаёт пользователь. Значения всех элементов всех массивов задаёт пользователь.
+
+
+        // function createArr(){
+        //     let lengthMainArr = +prompt('Сколько будет элементов в основном массиве?'),// Для пользователя количество вложенных массивов начинается не с 0, а с 1.
+        //     arr = [];
+
+        // for(let i = 0; i < lengthMainArr; i++){
+        //     let nestedArr = prompt(`Введите через пробел элементы для ${i + 1} вложенного массива, количество элементов не ограничено.`);
+        //     nestedArr = nestedArr.split(' ');
+        //     arr[i] = nestedArr;
+        // }
+        // console.log(arr);
+        // }
+
+        // createArr();
+
+    // -Создать функцию, которая убирает из строки все символы, которые мы передали вторым аргументом. 'func("hello world", ['l', 'd'])' вернет нам "heo wor". Исходную строку и символы для удаления задаёт пользователь
+
+        // let userString = prompt('Введите строку'),
+        //       stringSymbol = prompt('Введите через запятую без пробелов символы, которые Вы хотите удалить из строки, задайте пробел через запятую, если хотите удалить пробелы из строки'),
+        //       symbolArr = stringSymbol.split(',');
+        
+        // function removeSymbol(string, arr) {
+        //     arr.forEach(symbol =>{
+        //         for(let i = 0; i < string.length; i++){
+        //             string = string.replace(`${symbol}`, '');   //работает только при такой записи
+        //         }
+        //     });
+        //     console.log(userString);
+        //     console.log(symbolArr);
+        //     console.log(string);
+        // }
+
+        // removeSymbol(userString, symbolArr);
+
+
+
+        
+
+  
