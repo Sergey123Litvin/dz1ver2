@@ -193,6 +193,21 @@
         // removeElement(arr, 5);
         // console.log(arr);
 
+        // Решение с поиском элемента:
+
+            // const arr = [1, 2, 3, 4, 5, 6, 7, 32, 23, 53, 28];
+
+            // function removeElement(array, item) {
+            //     array.find((elem, index) =>{
+            //         if(elem === item){
+            //             array.splice(index, 1);
+            //         }
+            //     });
+            //     console.log(arr);
+            // }
+
+            // removeElement(arr, 23);
+
 
 // ДЗ 13. Написать несколько функций
 
