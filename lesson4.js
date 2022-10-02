@@ -208,6 +208,17 @@
 
             // removeElement(arr, 23);
 
+        //С indexOf
+
+                // const arr = [1, 2, 3, 4, 5, 6, 7, 32, 23, 53, 28];
+
+                // function removeElement(array, item) {
+                //         array.splice(array.indexOf(item), 1);
+                //     console.log(arr);
+                // }
+
+                // removeElement(arr, 6);
+
 
 // ДЗ 13. Написать несколько функций
 
