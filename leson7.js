@@ -138,64 +138,207 @@
     // - посыпать приправой (+ 15 тугриков, 0 калорий)
     // - полить майонезом (+ 20 тугриков, + 5 калорий).
 
-    class Hamburger {
+//     class Hamburger {
 
-        static SIZE_SMALL = 'SIZE_SMALL';
-        static SIZE_BIG = 'SIZE_BIG';
-        static STUFFING_CHEESE = 'STUFFING_CHEESE';
-        static STUFFING_SALAD = 'STUFFING_SALAD';
-        static STUFFING_POTATO = 'STUFFING_POTATO';
-        static TOPPING_MAYO = 'MAYO';
-        static TOPPING_SAUCE = 'SAUCE';
+//         static SIZE_SMALL = 'SIZE_SMALL';
+//         static SIZE_BIG = 'SIZE_BIG';
+//         static STUFFING_CHEESE = 'STUFFING_CHEESE';
+//         static STUFFING_SALAD = 'STUFFING_SALAD';
+//         static STUFFING_POTATO = 'STUFFING_POTATO';
+//         static TOPPING_MAYO = 'MAYO';
+//         static TOPPING_SAUCE = 'SAUCE';
 
-        constructor(size, stuffing){
-            this.toppingPrice = 0;
-            this.toppingCalories = 0;
+//         constructor(size, stuffing){
+//             this.toppingPrice = 0;
+//             this.toppingCalories = 0;
 
-            if(size === 'SIZE_SMALL') {
-                this.price = 50;
-                this.calories = 20;
-            } else if (size === 'SIZE_BIG') {
-                this.price = 100;
-                this.calories = 40;
-            }
+//             if(size === 'SIZE_SMALL') {
+//                 this.price = 50;
+//                 this.calories = 20;
+//             } else if (size === 'SIZE_BIG') {
+//                 this.price = 100;
+//                 this.calories = 40;
+//             }
 
-            if(stuffing === 'STUFFING_CHEESE') {
-                this.price = this.price + 10;
-                this.calories = this.calories + 20;
-            } else if(stuffing === 'STUFFING_SALAD') {
-                this.price = this.price + 20;
-                this.calories = this.calories + 5;
-            } else if(stuffing === 'STUFFING_POTATO') {
-                this.price = this.price + 15;
-                this.calories = this.calories + 10;
-            }
-        }
+//             if(stuffing === 'STUFFING_CHEESE') {
+//                 this.price = this.price + 10;
+//                 this.calories = this.calories + 20;
+//             } else if(stuffing === 'STUFFING_SALAD') {
+//                 this.price = this.price + 20;
+//                 this.calories = this.calories + 5;
+//             } else if(stuffing === 'STUFFING_POTATO') {
+//                 this.price = this.price + 15;
+//                 this.calories = this.calories + 10;
+//             }
+//         }
 
-        addTopping(topping) {
-            if(topping === 'MAYO') {
-                this.toppingPrice += 20;
-                this.toppingCalories += 5;
-            } else if(topping === 'SAUCE') {
-                this.toppingPrice += 15;
-                this.toppingCalories += 0;
-            }
-        }
+//         addTopping(topping) {
+//             if(topping === 'MAYO') {
+//                 this.toppingPrice += 20;
+//                 this.toppingCalories += 5;
+//             } else if(topping === 'SAUCE') {
+//                 this.toppingPrice += 15;
+//                 this.toppingCalories += 0;
+//             }
+//         }
 
-        calculateCalories() {
-            return this.calories + this.toppingCalories;
+//         calculateCalories() {
+//             return this.calories + this.toppingCalories;
             
+//         }
+
+//         calculatePrice() {
+//             return this.price + this.toppingPrice;
+//         }
+
+//     }
+
+//    let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
+//    hamburger.addTopping(Hamburger.TOPPING_MAYO);
+//    console.log('Calories: ' + hamburger.calculateCalories());
+//    console.log('Price: ' + hamburger.calculatePrice());
+//    hamburger.addTopping(Hamburger.TOPPING_SAUCE);
+//    console.log('Price with sauce: ' + hamburger.calculatePrice());
+
+
+
+// ДЗ 17. Студент
+    // Вам нужно сделать конструктор сущности Студент.
+    // У Студента есть имя, фамилия, год рождения — это свойства. Есть массив с оценками, это тоже свойство. И есть возможность получить возраст студента и его средний бал — это методы.
+    // Еще у всех Студентов есть по массиву одинаковой длины, в нем 25 элементов, изначально он не заполнен, но на 25 элементов. Это массив в котором отмечается посещаемость, каждый раз когда мы вызываем метод .present() на очередное пустое место в массив записывается true, когда вызываем .absent() — записывается false. Предусмотрите какую-нибудь защиту от того чтоб в массиве посещаемости не могло быть более 25 записей. Массив - это свойство, present и absent — методы.
+    // Последний метод: .summary(), проверяет среднюю оценку, и среднее посещение(количествоПосещений/количествоЗанятий), и если средняя оценка больше 90 а среднее посещение больше 0.9, то метод summary, возвращает строку "Молодец!", если одно из этих значений меньше, то — Хорошо, но можно лучше", если оба ниже — "Редиска!".
+    // Не забудьте после того как напишите этот конструктор, создать 2-3 экземпляра (конкретных студентов) и показать использование этих методов.
+
+    class Student {
+        constructor(name, surname, yearOfBirth, arrayProgress) {
+            this.name = name;
+            this.surname = surname;
+            this.yearOfBirth = yearOfBirth;
+            this.arrayProgress = arrayProgress;
+            this.attendance = [];
+            this.attendance.length = 25;
         }
 
-        calculatePrice() {
-            return this.price + this.toppingPrice;
+        getAge(){
+            return 2022 - this.yearOfBirth;
         }
 
+        getAverageRating() {
+            let totalAverage = 0,
+                colAverage = 0;
+            for(let i of this.arrayProgress) {
+                totalAverage += i;
+                colAverage++
+            }
+            return totalAverage/colAverage
+        }
+        
+        present() {
+            for(let i = 0; i < 25; i++) {
+                if( this.attendance[i] === undefined) {
+                    this.attendance[i] = true;
+                    i = 25;
+                }
+            }
+        }
+
+        absent() {
+            for(let i = 0; i < 25; i++) {
+                if( this.attendance[i] === undefined) {
+                    this.attendance[i] = false;
+                    i = 26;
+                }
+            }
+        }
+
+        summary() {
+            let averageRating = this.getAverageRating(),
+                attendedClasses = 0,
+                numberOfLessons = 0;
+            this.attendance.forEach(elem => {
+                if(elem === true){
+                    attendedClasses++;
+                }
+                if(elem === true || elem === false){
+                    numberOfLessons++;
+                }
+            });
+
+            let averageAttended = attendedClasses / numberOfLessons;
+            console.log(averageRating);
+            console.log(averageAttended);
+
+            if(averageRating >= 90 && averageAttended >= 0.9) {
+                console.log('Молодец!');
+            } else if(averageRating >= 90 && averageAttended <= 0.9 || averageRating <= 90 && averageAttended >= 0.9 ){
+                console.log('Хорошо, но можно лучше!');
+            } else {
+                console.log('Редиска!');
+            }
+        }
     }
 
-   let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
-   hamburger.addTopping(Hamburger.TOPPING_MAYO);
-   console.log('Calories: ' + hamburger.calculateCalories());
-   console.log('Price: ' + hamburger.calculatePrice());
-   hamburger.addTopping(Hamburger.TOPPING_SAUCE);
-   console.log('Price with sauce: ' + hamburger.calculatePrice());
+    let student1 = new Student('Валентин','Пирожков',1995,[98,78,68,59,89]);
+    console.log(student1);
+    console.log(`Средняя оценка: ${student1.getAverageRating()}`);
+    console.log(`Возраст: ${student1.getAge()}`);
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.present();
+    student1.absent();
+    console.log(student1);
+    student1.summary();
+
+    let student2 = new Student('Игорь','Гулящий',1992,[56,75,68,59,89,47,27,83]);
+    console.log(student2);
+    console.log(`Средняя оценка: ${student2.getAverageRating()}`);
+    console.log(`Возраст: ${student2.getAge()}`);
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.present();
+    student2.absent();
+    student2.absent();
+    student2.absent();
+    student2.absent();
+    student2.absent();
+    student2.absent();
+    student2.absent();
+    student2.absent();
+    console.log(student2);
+    student2.summary();
+
+    let student3 = new Student('Маша','Афонина',1998,[98,99,100,89,96,97,93,95]);
+    console.log(student3);
+    console.log(`Средняя оценка: ${student3.getAverageRating()}`);
+    console.log(`Возраст: ${student3.getAge()}`);
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.present();
+    student3.absent();
+    student3.present();
+    student3.present();
+    student3.present();
+    console.log(student3);
+    student3.summary();
+
