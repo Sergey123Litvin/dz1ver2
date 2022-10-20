@@ -4,40 +4,52 @@
     // Не ограничивать количество жильцов в квартире
 
         
-        // class House {
-        //     constructor(numberOfApartments, numberOfTenantInApartment) {
-        //         this.numberOfTenantInApartment = numberOfTenantInApartment;
-        //         this.address = 'Street Wide, 4'
-        //         this.apartments = [];
-        //         for(let i = 0; i < numberOfApartments; i++){
-        //             this.apartments[i] = new Apartment(i + 1, numberOfTenantInApartment); 
-        //         } 
-        //     }
+    class House {
+        constructor(address, yearOfConstruction, brickOrPanel){
+            this.address = address;
+            this.yearOfConstruction = yearOfConstruction;
+            this.brickOrPanel = brickOrPanel;
+            this.apartments = [];
+        }
 
-        //     setAddress(newAddress){
-        //         this.address = newAddress;
-        //     }
-        // }
+        addApartment(numberOfRooms, balconyOrLoggia, ceilingHeight){
+            this.apartments[this.apartments.length] = new Apartment(this.apartments.length + 1, numberOfRooms, balconyOrLoggia, ceilingHeight);
+        }
+    }
 
-        // class Apartment {
-        //     constructor(apartmentNumber, numberOfTenant) {
-        //         this.apartmentNumber = apartmentNumber;
-        //         this.numberOfTenant = numberOfTenant;
-        //         this.tenants = [];
-        //         for(let i = 0; i < numberOfTenant; i++){
-        //             this.tenants[i] = new Tenant();
-        //         }
-        //     }
-        // }
+    class Apartment {
+        constructor(numberOfApartment, numberOfRooms, balconyOrLoggia, ceilingHeight) {
+            this.numberOfApartment = numberOfApartment;
+            this.numberOfRooms = numberOfRooms;
+            this.balconyOrLoggia = balconyOrLoggia;
+            this.ceilingHeight = ceilingHeight;
+            this.tenants = [];
+        }
 
-        // class Tenant {
-        //     constructor() {
-        //         this.weight = Math.floor(Math.random() * (100 - 50)) + 50;
-        //     }
-        // }
+        addTenant(name, surname, age) {
+            this.tenants[this.tenants.length] = new Tenant(name, surname, age);
+        }
+    }
 
-        // const house = new House(4, 2);
-        // console.log(house);
+    class Tenant {
+        constructor(name, surname, age) {
+            this.name = name;
+            this.surname = surname;
+            this.age = age;
+        }
+    }
+
+    let house = new House('Zelena 21', 1998, 'brick'); //Создаес дом с адрессом, годом постройки и типом (кирпичный или панельный)
+    house.addApartment(3, 'balcony', '2.2м'); // Через метод добавляем квартиры с указанием числа комнат, балконом или лоджией, высотой потолков. Так же при добавлении квартир автоматически указывается номер квартиры по порядку с 1.
+    house.addApartment(1, 'loggia', '2.5м');
+    house.addApartment(2, 'balcony', '2.2м');
+    house.addApartment(3, 'loggia', '2.5м');
+    house.addApartment(1, 'balcony', '2.3м');
+    house.apartments[0].addTenant('Igor', 'Ivanov', 31);//Через метод можем создавать жильцов в определенную квартиру. Квартиру нужно указывать по инжексу начиная с 0 (для квартиры с номером 1 нужно указать house.apartments[0])
+    house.apartments[2].addTenant('Alla', 'Puh', 37);
+    house.apartments[2].addTenant('Valentin', 'Nalivaico', 45);
+    house.apartments[4].addTenant('Ivan', 'Shernishov', 26); //Добавил 1 жильца в 1 квартиру, 2х жильцов в 3-ю квартиру, 1 жильца в 5-ю квартиру.
+    console.log(house);
 
 
 // ДЗ 15. Создаем сущности
@@ -347,53 +359,52 @@
     // Добавить к экземпляру метод - check(obj), параметр obj которого имеет свойства X, Y, znak. Метод должен подтвердить у пользователя хочет ли он произвести действие znak c Х и У. Если - да, сделать математическое действие znak(которое описано в прототипе), иначе - запросить ввод новых данных через метод input() класса SuperMath. Пример обекта: `obj = { X:12, Y:3, znak: “/”}`, возможные варианты znak=> `+ - / * %`.
     // При вводе znak нужно сделать проверку корректности ввода на возможные математические действия
 
-    class SuperMath {
-        constructor() {
-            this.obj = {};
-        }
+    // class SuperMath {
+    //     constructor() {
+    //         this.obj = {};
+    //     }
 
-        result(){
-            if(this.obj.znak === "+") {
-                alert(`${this.obj.x} + ${this.obj.y} = ${this.obj.x + this.obj.y}`);
-            } else if(this.obj.znak === "-") {
-                alert(`${this.obj.x} - ${this.obj.y} = ${this.obj.x - this.obj.y}`);
-            } else if(this.obj.znak === "/") {
-                alert(`${this.obj.x} / ${this.obj.y} = ${this.obj.x / this.obj.y}`);
-            } else if(this.obj.znak === "*") {
-                alert(`${this.obj.x} * ${this.obj.y} = ${this.obj.x * this.obj.y}`);
-            } else if(this.obj.znak === "%") {
-                alert(`${this.obj.x} % ${this.obj.y} = ${this.obj.x % this.obj.y}`);
-            }
-        }
+    //     result(){
+    //         if(this.obj.znak === "+") {
+    //             alert(`${this.obj.x} + ${this.obj.y} = ${this.obj.x + this.obj.y}`);
+    //         } else if(this.obj.znak === "-") {
+    //             alert(`${this.obj.x} - ${this.obj.y} = ${this.obj.x - this.obj.y}`);
+    //         } else if(this.obj.znak === "/") {
+    //             alert(`${this.obj.x} / ${this.obj.y} = ${this.obj.x / this.obj.y}`);
+    //         } else if(this.obj.znak === "*") {
+    //             alert(`${this.obj.x} * ${this.obj.y} = ${this.obj.x * this.obj.y}`);
+    //         } else if(this.obj.znak === "%") {
+    //             alert(`${this.obj.x} % ${this.obj.y} = ${this.obj.x % this.obj.y}`);
+    //         }
+    //     }
 
-        input() {    
-            let x = +prompt('Введите первое число'),
-                y = +prompt('Введите второе число'),
-                znak = prompt('Введите желаемую операцию: + - / * %');
+    //     input() {    
+    //         let x = +prompt('Введите первое число'),
+    //             y = +prompt('Введите второе число'),
+    //             znak = prompt('Введите желаемую операцию: + - / * %');
             
-            if(!isNaN(x) && !isNaN(y) && znak === '+' || znak === '-' || znak === '/' || znak === '*' || znak === '%') {
-                this.obj.x = x;
-                this.obj.y = y;
-                this.obj.znak = znak;
-            } else {
-                alert('Введите корректные данные!');
-                this.input();
-            }
-        }
+    //         if(!isNaN(x) && !isNaN(y) && znak === '+' || znak === '-' || znak === '/' || znak === '*' || znak === '%') {
+    //             this.obj.x = x;
+    //             this.obj.y = y;
+    //             this.obj.znak = znak;
+    //         } else {
+    //             alert('Введите корректные данные!');
+    //             this.input();
+    //         }
+    //     }
 
-        check(obj) {
-            let yesOrNo = confirm(`Желаете проделать математическую операцию: ${obj.znak} с числами: ${obj.x} и ${obj.y}?`);
+    //     check(obj) {
+    //         let yesOrNo = confirm(`Желаете проделать математическую операцию: ${obj.znak} с числами: ${obj.x} и ${obj.y}?`);
             
-            if(yesOrNo === true) {
-                this.result();
-            } else {
-                this.input();
-            }
-        }
-    }
+    //         if(yesOrNo === true) {
+    //             this.result();
+    //         } else {
+    //             this.input();
+    //         }
+    //     }
+    // }
 
-    let math = new SuperMath();
-    math.input();
-    math.check(math.obj);
+    // let math = new SuperMath();
+    // math.input();
+    // math.check(math.obj);
 
-    
