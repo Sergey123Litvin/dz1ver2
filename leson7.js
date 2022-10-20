@@ -4,52 +4,52 @@
     // Не ограничивать количество жильцов в квартире
 
         
-    class House {
-        constructor(address, yearOfConstruction, brickOrPanel){
-            this.address = address;
-            this.yearOfConstruction = yearOfConstruction;
-            this.brickOrPanel = brickOrPanel;
-            this.apartments = [];
-        }
+    // class House {
+    //     constructor(address, yearOfConstruction, brickOrPanel){
+    //         this.address = address;
+    //         this.yearOfConstruction = yearOfConstruction;
+    //         this.brickOrPanel = brickOrPanel;
+    //         this.apartments = [];
+    //     }
 
-        addApartment(numberOfRooms, balconyOrLoggia, ceilingHeight){
-            this.apartments[this.apartments.length] = new Apartment(this.apartments.length + 1, numberOfRooms, balconyOrLoggia, ceilingHeight);
-        }
-    }
+    //     addApartment(numberOfRooms, balconyOrLoggia, ceilingHeight){
+    //         this.apartments[this.apartments.length] = new Apartment(this.apartments.length + 1, numberOfRooms, balconyOrLoggia, ceilingHeight);
+    //     }
+    // }
 
-    class Apartment {
-        constructor(numberOfApartment, numberOfRooms, balconyOrLoggia, ceilingHeight) {
-            this.numberOfApartment = numberOfApartment;
-            this.numberOfRooms = numberOfRooms;
-            this.balconyOrLoggia = balconyOrLoggia;
-            this.ceilingHeight = ceilingHeight;
-            this.tenants = [];
-        }
+    // class Apartment {
+    //     constructor(numberOfApartment, numberOfRooms, balconyOrLoggia, ceilingHeight) {
+    //         this.numberOfApartment = numberOfApartment;
+    //         this.numberOfRooms = numberOfRooms;
+    //         this.balconyOrLoggia = balconyOrLoggia;
+    //         this.ceilingHeight = ceilingHeight;
+    //         this.tenants = [];
+    //     }
 
-        addTenant(name, surname, age) {
-            this.tenants[this.tenants.length] = new Tenant(name, surname, age);
-        }
-    }
+    //     addTenant(name, surname, age) {
+    //         this.tenants[this.tenants.length] = new Tenant(name, surname, age);
+    //     }
+    // }
 
-    class Tenant {
-        constructor(name, surname, age) {
-            this.name = name;
-            this.surname = surname;
-            this.age = age;
-        }
-    }
+    // class Tenant {
+    //     constructor(name, surname, age) {
+    //         this.name = name;
+    //         this.surname = surname;
+    //         this.age = age;
+    //     }
+    // }
 
-    let house = new House('Zelena 21', 1998, 'brick'); //Создаес дом с адрессом, годом постройки и типом (кирпичный или панельный)
-    house.addApartment(3, 'balcony', '2.2м'); // Через метод добавляем квартиры с указанием числа комнат, балконом или лоджией, высотой потолков. Так же при добавлении квартир автоматически указывается номер квартиры по порядку с 1.
-    house.addApartment(1, 'loggia', '2.5м');
-    house.addApartment(2, 'balcony', '2.2м');
-    house.addApartment(3, 'loggia', '2.5м');
-    house.addApartment(1, 'balcony', '2.3м');
-    house.apartments[0].addTenant('Igor', 'Ivanov', 31);//Через метод можем создавать жильцов в определенную квартиру. Квартиру нужно указывать по инжексу начиная с 0 (для квартиры с номером 1 нужно указать house.apartments[0])
-    house.apartments[2].addTenant('Alla', 'Puh', 37);
-    house.apartments[2].addTenant('Valentin', 'Nalivaico', 45);
-    house.apartments[4].addTenant('Ivan', 'Shernishov', 26); //Добавил 1 жильца в 1 квартиру, 2х жильцов в 3-ю квартиру, 1 жильца в 5-ю квартиру.
-    console.log(house);
+    // let house = new House('Zelena 21', 1998, 'brick'); //Создаес дом с адрессом, годом постройки и типом (кирпичный или панельный)
+    // house.addApartment(3, 'balcony', '2.2м'); // Через метод добавляем квартиры с указанием числа комнат, балконом или лоджией, высотой потолков. Так же при добавлении квартир автоматически указывается номер квартиры по порядку с 1.
+    // house.addApartment(1, 'loggia', '2.5м');
+    // house.addApartment(2, 'balcony', '2.2м');
+    // house.addApartment(3, 'loggia', '2.5м');
+    // house.addApartment(1, 'balcony', '2.3м');
+    // house.apartments[0].addTenant('Igor', 'Ivanov', 31);//Через метод можем создавать жильцов в определенную квартиру. Квартиру нужно указывать по инжексу начиная с 0 (для квартиры с номером 1 нужно указать house.apartments[0])
+    // house.apartments[2].addTenant('Alla', 'Puh', 37);
+    // house.apartments[2].addTenant('Valentin', 'Nalivaico', 45);
+    // house.apartments[4].addTenant('Ivan', 'Shernishov', 26); //Добавил 1 жильца в 1 квартиру, 2х жильцов в 3-ю квартиру, 1 жильца в 5-ю квартиру.
+    // console.log(house);
 
 
 // ДЗ 15. Создаем сущности
@@ -65,78 +65,78 @@
         // Все данные о человеке и об автомобиле получать от пользователя. Реализовать необходимые проверки на корректность ввода (пустые поля, возраст >18 для человека и т.д. по необходимости).
     // Максимально использовать функции
 
-        // let human,
-        //     auto;
 
-        // class Human {
-        //     constructor(name, age) {
-        //         this.name = name;
-        //         this.age = age;
-        //     }
-        //     getInfo()   {
-        //         console.log({
-        //             name: this.name,
-        //             age: this.age
-        //         });
-        //     }
-        // }
+        class Human {
+            constructor() {
+                this.name;
+                this.surname;
+                this.age;
+            }
+            data(){
+                let name = prompt('Введите имя'),
+                    surname = prompt('Введите фамилию'),
+                    age = +prompt('Введите возраст');
+                if(typeof(name) === 'string' && name.length > 0 && name !== null && typeof(surname) === 'string' && surname.length > 0 && surname !== null && age > 0 && age < 125 && age !== NaN) {
+                    this.name = name;
+                    this.surname = surname;
+                    this.age = age;
+                } else {
+                    alert('Введите данные корректно!');
+                    this.data();
+                }
+                
+            }
+            getInfo()   {
+                console.log({
+                    name: this.name,
+                    surname: this.surname,
+                    age: this.age
+                });
+            }
+        }
 
-        // class Auto {
-        //     constructor(brandAuto, yearOfIssue) {
-        //         this.brandAuto = brandAuto;
-        //         this.yearOfIssue = yearOfIssue;
-        //         this.driver;
-        //     }
-        //     getInfo() {
-        //         console.log({
-        //             brandAuto: this.brandAuto,
-        //             yearOfIssue: this.yearOfIssue,
-        //             driver: this.driver
-        //         });
-        //     }
-        //     setDriver(driver) {
-        //         this.driver = driver;
-        //     }
-        // }
+        class Auto {
+            constructor() {
+                this.brandAuto;
+                this.yearOfIssue;
+                this.driver;
+            }
+            data(){
+                let brandAuto = prompt('Введите марку авто'),
+                    yearOfIssue = +prompt('Введите год выпуска авто числом в формате: 1999'); 
+                if(typeof(brandAuto) === 'string' && brandAuto.length > 0 && brandAuto !== null && yearOfIssue > 1880 && yearOfIssue < 2023 && yearOfIssue !== NaN) {
+                    this.brandAuto = brandAuto;
+                    this.yearOfIssue = yearOfIssue;
+                } else {
+                    alert('Введите данные корректно!');
+                    this.data();
+                }
+            }
+            getInfo() {
+                console.log({
+                    brandAuto: this.brandAuto,
+                    yearOfIssue: this.yearOfIssue,
+                    driver: this.driver
+                });
+            }
+            setDriver(driver) {
+                if(driver.age >= 18) {
+                    this.driver = driver;
+                } else {
+                    console.log('Водителю меньше 18!')
+                }
+            }
+        }
 
-        // function createHuman() {
-        //     let name = prompt('Введите имя'),
-        //         age = +prompt('Введите возраст');
-        //     if(typeof(name) === 'string' && name.length > 0 && name !== null && age > 0 && age < 125 && age !== NaN) {
-        //         human = new Human(name, age);
-        //     } else {
-        //         alert('Введите данные корректно!');
-        //         createHuman();
-        //     }
-        // }
+        let human = new Human();
+        human.data();
+        human.getInfo();
+        let auto = new Auto();
+        auto.data();
+        auto.getInfo();
+        auto.setDriver(human);
+        auto.getInfo();
 
-        // function createAuto() {
-        //     let brandAuto = prompt('Введите марку авто'),
-        //         yearOfIssue = +prompt('Введите год выпуска авто числом в формате: 1999');
-        //     if(typeof(brandAuto) === 'string' && brandAuto.length > 0 && brandAuto !== null && yearOfIssue > 1880 && yearOfIssue < 2023 && yearOfIssue !== NaN) {
-        //         auto = new Auto(brandAuto, yearOfIssue);
-        //     } else {
-        //         alert('Введите данные корректно!');
-        //         createAuto();
-        //     }
-        // }
-
-        // function addingHumanToCar(car, human) {
-        //     if(human.age >= 18) {
-        //         car.setDriver(human);
-        //     } else {
-        //         console.log('Водителю меньше 18!')
-        //     }
-        // }
-
-
-
-        // createHuman();
-        // createAuto();
-        // human.getInfo();
-        // auto.getInfo();
-        // addingHumanToCar(auto, human);
-        // auto.getInfo();
 
 // ДЗ 16. Гамбургеры
 // Сеть фастфудов предлагает несколько видов гамбургеров:
