@@ -209,136 +209,191 @@
     // Последний метод: .summary(), проверяет среднюю оценку, и среднее посещение(количествоПосещений/количествоЗанятий), и если средняя оценка больше 90 а среднее посещение больше 0.9, то метод summary, возвращает строку "Молодец!", если одно из этих значений меньше, то — Хорошо, но можно лучше", если оба ниже — "Редиска!".
     // Не забудьте после того как напишите этот конструктор, создать 2-3 экземпляра (конкретных студентов) и показать использование этих методов.
 
-    class Student {
-        constructor(name, surname, yearOfBirth, arrayProgress) {
-            this.name = name;
-            this.surname = surname;
-            this.yearOfBirth = yearOfBirth;
-            this.arrayProgress = arrayProgress;
-            this.attendance = [];
-            this.attendance.length = 25;
-        }
+    // class Student {
+    //     constructor(name, surname, yearOfBirth, arrayProgress) {
+    //         this.name = name;
+    //         this.surname = surname;
+    //         this.yearOfBirth = yearOfBirth;
+    //         this.arrayProgress = arrayProgress;
+    //         this.attendance = [];
+    //         this.attendance.length = 25;
+    //     }
 
-        getAge(){
-            return 2022 - this.yearOfBirth;
-        }
+    //     getAge(){
+    //         return 2022 - this.yearOfBirth;
+    //     }
 
-        getAverageRating() {
-            let totalAverage = 0,
-                colAverage = 0;
-            for(let i of this.arrayProgress) {
-                totalAverage += i;
-                colAverage++
-            }
-            return totalAverage/colAverage
-        }
+    //     getAverageRating() {
+    //         let totalAverage = 0,
+    //             colAverage = 0;
+    //         for(let i of this.arrayProgress) {
+    //             totalAverage += i;
+    //             colAverage++
+    //         }
+    //         return totalAverage/colAverage
+    //     }
         
-        present() {
-            for(let i = 0; i < 25; i++) {
-                if( this.attendance[i] === undefined) {
-                    this.attendance[i] = true;
-                    i = 25;
-                }
+    //     present() {
+    //         for(let i = 0; i < 25; i++) {
+    //             if( this.attendance[i] === undefined) {
+    //                 this.attendance[i] = true;
+    //                 i = 25;
+    //             }
+    //         }
+    //     }
+
+    //     absent() {
+    //         for(let i = 0; i < 25; i++) {
+    //             if( this.attendance[i] === undefined) {
+    //                 this.attendance[i] = false;
+    //                 i = 26;
+    //             }
+    //         }
+    //     }
+
+    //     summary() {
+    //         let averageRating = this.getAverageRating(),
+    //             attendedClasses = 0,
+    //             numberOfLessons = 0;
+    //         this.attendance.forEach(elem => {
+    //             if(elem === true){
+    //                 attendedClasses++;
+    //             }
+    //             if(elem === true || elem === false){
+    //                 numberOfLessons++;
+    //             }
+    //         });
+
+    //         let averageAttended = attendedClasses / numberOfLessons;
+    //         console.log(averageRating);
+    //         console.log(averageAttended);
+
+    //         if(averageRating >= 90 && averageAttended >= 0.9) {
+    //             console.log('Молодец!');
+    //         } else if(averageRating >= 90 && averageAttended <= 0.9 || averageRating <= 90 && averageAttended >= 0.9 ){
+    //             console.log('Хорошо, но можно лучше!');
+    //         } else {
+    //             console.log('Редиска!');
+    //         }
+    //     }
+    // }
+
+    // let student1 = new Student('Валентин','Пирожков',1995,[98,78,68,59,89]);
+    // console.log(student1);
+    // console.log(`Средняя оценка: ${student1.getAverageRating()}`);
+    // console.log(`Возраст: ${student1.getAge()}`);
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.present();
+    // student1.absent();
+    // console.log(student1);
+    // student1.summary();
+
+    // let student2 = new Student('Игорь','Гулящий',1992,[56,75,68,59,89,47,27,83]);
+    // console.log(student2);
+    // console.log(`Средняя оценка: ${student2.getAverageRating()}`);
+    // console.log(`Возраст: ${student2.getAge()}`);
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.present();
+    // student2.absent();
+    // student2.absent();
+    // student2.absent();
+    // student2.absent();
+    // student2.absent();
+    // student2.absent();
+    // student2.absent();
+    // student2.absent();
+    // console.log(student2);
+    // student2.summary();
+
+    // let student3 = new Student('Маша','Афонина',1998,[98,99,100,89,96,97,93,95]);
+    // console.log(student3);
+    // console.log(`Средняя оценка: ${student3.getAverageRating()}`);
+    // console.log(`Возраст: ${student3.getAge()}`);
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // student3.absent();
+    // student3.present();
+    // student3.present();
+    // student3.present();
+    // console.log(student3);
+    // student3.summary();
+
+// ДЗ 18. SuperMath
+    // Создать класс SuperMath.
+    // Добавить к экземпляру метод - check(obj), параметр obj которого имеет свойства X, Y, znak. Метод должен подтвердить у пользователя хочет ли он произвести действие znak c Х и У. Если - да, сделать математическое действие znak(которое описано в прототипе), иначе - запросить ввод новых данных через метод input() класса SuperMath. Пример обекта: `obj = { X:12, Y:3, znak: “/”}`, возможные варианты znak=> `+ - / * %`.
+    // При вводе znak нужно сделать проверку корректности ввода на возможные математические действия
+
+    class SuperMath {
+        constructor() {
+            this.obj = {};
+        }
+
+        result(){
+            if(this.obj.znak === "+") {
+                alert(`${this.obj.x} + ${this.obj.y} = ${this.obj.x + this.obj.y}`);
+            } else if(this.obj.znak === "-") {
+                alert(`${this.obj.x} - ${this.obj.y} = ${this.obj.x - this.obj.y}`);
+            } else if(this.obj.znak === "/") {
+                alert(`${this.obj.x} / ${this.obj.y} = ${this.obj.x / this.obj.y}`);
+            } else if(this.obj.znak === "*") {
+                alert(`${this.obj.x} * ${this.obj.y} = ${this.obj.x * this.obj.y}`);
+            } else if(this.obj.znak === "%") {
+                alert(`${this.obj.x} % ${this.obj.y} = ${this.obj.x % this.obj.y}`);
             }
         }
 
-        absent() {
-            for(let i = 0; i < 25; i++) {
-                if( this.attendance[i] === undefined) {
-                    this.attendance[i] = false;
-                    i = 26;
-                }
-            }
-        }
-
-        summary() {
-            let averageRating = this.getAverageRating(),
-                attendedClasses = 0,
-                numberOfLessons = 0;
-            this.attendance.forEach(elem => {
-                if(elem === true){
-                    attendedClasses++;
-                }
-                if(elem === true || elem === false){
-                    numberOfLessons++;
-                }
-            });
-
-            let averageAttended = attendedClasses / numberOfLessons;
-            console.log(averageRating);
-            console.log(averageAttended);
-
-            if(averageRating >= 90 && averageAttended >= 0.9) {
-                console.log('Молодец!');
-            } else if(averageRating >= 90 && averageAttended <= 0.9 || averageRating <= 90 && averageAttended >= 0.9 ){
-                console.log('Хорошо, но можно лучше!');
+        input() {    
+            let x = +prompt('Введите первое число'),
+                y = +prompt('Введите второе число'),
+                znak = prompt('Введите желаемую операцию: + - / * %');
+            
+            if(!isNaN(x) && !isNaN(y) && znak === '+' || znak === '-' || znak === '/' || znak === '*' || znak === '%') {
+                this.obj.x = x;
+                this.obj.y = y;
+                this.obj.znak = znak;
             } else {
-                console.log('Редиска!');
+                alert('Введите корректные данные!');
+                this.input();
+            }
+        }
+
+        check(obj) {
+            let yesOrNo = confirm(`Желаете проделать математическую операцию: ${obj.znak} с числами: ${obj.x} и ${obj.y}?`);
+            
+            if(yesOrNo === true) {
+                this.result();
+            } else {
+                this.input();
             }
         }
     }
 
-    let student1 = new Student('Валентин','Пирожков',1995,[98,78,68,59,89]);
-    console.log(student1);
-    console.log(`Средняя оценка: ${student1.getAverageRating()}`);
-    console.log(`Возраст: ${student1.getAge()}`);
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.present();
-    student1.absent();
-    console.log(student1);
-    student1.summary();
+    let math = new SuperMath();
+    math.input();
+    math.check(math.obj);
 
-    let student2 = new Student('Игорь','Гулящий',1992,[56,75,68,59,89,47,27,83]);
-    console.log(student2);
-    console.log(`Средняя оценка: ${student2.getAverageRating()}`);
-    console.log(`Возраст: ${student2.getAge()}`);
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.present();
-    student2.absent();
-    student2.absent();
-    student2.absent();
-    student2.absent();
-    student2.absent();
-    student2.absent();
-    student2.absent();
-    student2.absent();
-    console.log(student2);
-    student2.summary();
-
-    let student3 = new Student('Маша','Афонина',1998,[98,99,100,89,96,97,93,95]);
-    console.log(student3);
-    console.log(`Средняя оценка: ${student3.getAverageRating()}`);
-    console.log(`Возраст: ${student3.getAge()}`);
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.present();
-    student3.absent();
-    student3.present();
-    student3.present();
-    student3.present();
-    console.log(student3);
-    student3.summary();
-
+    
