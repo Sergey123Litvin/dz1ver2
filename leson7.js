@@ -4,52 +4,78 @@
     // Не ограничивать количество жильцов в квартире
 
         
-    // class House {
-    //     constructor(address, yearOfConstruction, brickOrPanel){
-    //         this.address = address;
-    //         this.yearOfConstruction = yearOfConstruction;
-    //         this.brickOrPanel = brickOrPanel;
-    //         this.apartments = [];
-    //     }
+    class House {
+        constructor(address, numberOfApartments, brickOrPanel){
+            this.address = address;
+            this.brickOrPanel = brickOrPanel;
+            this.apartments = [];
+            this.apartments.length = numberOfApartments;
+        }
 
-    //     addApartment(numberOfRooms, balconyOrLoggia, ceilingHeight){
-    //         this.apartments[this.apartments.length] = new Apartment(this.apartments.length + 1, numberOfRooms, balconyOrLoggia, ceilingHeight);
-    //     }
-    // }
+        addApartment(numberOfRooms, balconyOrLoggia, ceilingHeight){
+            for(let i = 0; i < this.apartments.length; i++) {
+                if( this.apartments[i] === undefined) {
+                    this.apartments[i] = new Apartment(i + 1, numberOfRooms, balconyOrLoggia, ceilingHeight);
+                    break;
+                }
+            }
+        }
 
-    // class Apartment {
-    //     constructor(numberOfApartment, numberOfRooms, balconyOrLoggia, ceilingHeight) {
-    //         this.numberOfApartment = numberOfApartment;
-    //         this.numberOfRooms = numberOfRooms;
-    //         this.balconyOrLoggia = balconyOrLoggia;
-    //         this.ceilingHeight = ceilingHeight;
-    //         this.tenants = [];
-    //     }
+        removeLastAddApartment(){
+            for(let i = 0; i < this.apartments.length; i++) {
+                if( this.apartments[i] === undefined) {
+                    this.apartments[i - 1] = undefined;
+                    break;
+                } 
+            }
+        }
+    }
 
-    //     addTenant(name, surname, age) {
-    //         this.tenants[this.tenants.length] = new Tenant(name, surname, age);
-    //     }
-    // }
+    class Apartment {
+        constructor(numberOfApartment, numberOfRooms, balconyOrLoggia, ceilingHeight) {
+            this.numberOfApartment = numberOfApartment;
+            this.numberOfRooms = numberOfRooms;
+            this.balconyOrLoggia = balconyOrLoggia;
+            this.ceilingHeight = ceilingHeight;
+            this.tenants = [];
+        }
 
-    // class Tenant {
-    //     constructor(name, surname, age) {
-    //         this.name = name;
-    //         this.surname = surname;
-    //         this.age = age;
-    //     }
-    // }
+        addTenant(name, surname, age) {
+            this.tenants[this.tenants.length] = new Tenant(name, surname, age);
+        }
 
-    // let house = new House('Zelena 21', 1998, 'brick'); //Создаес дом с адрессом, годом постройки и типом (кирпичный или панельный)
-    // house.addApartment(3, 'balcony', '2.2м'); // Через метод добавляем квартиры с указанием числа комнат, балконом или лоджией, высотой потолков. Так же при добавлении квартир автоматически указывается номер квартиры по порядку с 1.
-    // house.addApartment(1, 'loggia', '2.5м');
-    // house.addApartment(2, 'balcony', '2.2м');
-    // house.addApartment(3, 'loggia', '2.5м');
-    // house.addApartment(1, 'balcony', '2.3м');
-    // house.apartments[0].addTenant('Igor', 'Ivanov', 31);//Через метод можем создавать жильцов в определенную квартиру. Квартиру нужно указывать по инжексу начиная с 0 (для квартиры с номером 1 нужно указать house.apartments[0])
-    // house.apartments[2].addTenant('Alla', 'Puh', 37);
-    // house.apartments[2].addTenant('Valentin', 'Nalivaico', 45);
-    // house.apartments[4].addTenant('Ivan', 'Shernishov', 26); //Добавил 1 жильца в 1 квартиру, 2х жильцов в 3-ю квартиру, 1 жильца в 5-ю квартиру.
-    // console.log(house);
+        removeTenant(name, surname){
+            for(let i = 0; i < this.tenants.length; i++) {
+                if(this.tenants[i].name === name && this.tenants[i].surname === surname){
+                    this.tenants[i] = undefined;
+                    break;
+                }
+            }
+        }
+    }
+
+    class Tenant {
+        constructor(name, surname, age) {
+            this.name = name;
+            this.surname = surname;
+            this.age = age;
+        }
+    }
+
+    let house = new House('Zelena 21', 40, 'brick'); //Создаес дом с адрессом, количеством возможных квартир и типом (кирпичный или панельный)
+    house.addApartment(3, 'balcony', '2.2м'); // Через метод добавляем квартиры с указанием числа комнат, балконом или лоджией, высотой потолков. Так же при добавлении квартир автоматически указывается номер квартиры по порядку с 1.
+    house.addApartment(1, 'loggia', '2.5м');
+    house.addApartment(2, 'balcony', '2.2м');
+    house.addApartment(3, 'loggia', '2.5м');
+    house.addApartment(1, 'balcony', '2.3м');
+    house.addApartment(5, 'balcony', '2.2м');
+    house.removeLastAddApartment(); // Метод удаляет последнюю созданую квартиру
+    house.apartments[0].addTenant('Igor', 'Ivanov', 31);//Через метод можем создавать жильцов в определенную квартиру. Квартиру нужно указывать по инжексу начиная с 0 (для квартиры с номером 1 нужно указать house.apartments[0])
+    house.apartments[2].addTenant('Alla', 'Puh', 37);
+    house.apartments[2].addTenant('Valentin', 'Nalivaico', 45);
+    house.apartments[2].removeTenant('Alla', 'Puh'); // Выселяем Аллу
+    house.apartments[4].addTenant('Ivan', 'Shernishov', 26); //Добавил 1 жильца в 1 квартиру, 2х жильцов в 3-ю квартиру, 1 жильца в 5-ю квартиру.
+    console.log(house);
 
 
 // ДЗ 15. Создаем сущности
@@ -66,76 +92,76 @@
     // Максимально использовать функции
 
 
-        class Human {
-            constructor() {
-                this.name;
-                this.surname;
-                this.age;
-            }
-            data(){
-                let name = prompt('Введите имя'),
-                    surname = prompt('Введите фамилию'),
-                    age = +prompt('Введите возраст');
-                if(typeof(name) === 'string' && name.length > 0 && name !== null && typeof(surname) === 'string' && surname.length > 0 && surname !== null && age > 0 && age < 125 && age !== NaN) {
-                    this.name = name;
-                    this.surname = surname;
-                    this.age = age;
-                } else {
-                    alert('Введите данные корректно!');
-                    this.data();
-                }
+        // class Human {
+        //     constructor() {
+        //         this.name;
+        //         this.surname;
+        //         this.age;
+        //     }
+        //     data(){
+        //         let name = prompt('Введите имя'),
+        //             surname = prompt('Введите фамилию'),
+        //             age = +prompt('Введите возраст');
+        //         if(typeof(name) === 'string' && name.length > 0 && name !== null && typeof(surname) === 'string' && surname.length > 0 && surname !== null && age > 0 && age < 125 && age !== NaN) {
+        //             this.name = name;
+        //             this.surname = surname;
+        //             this.age = age;
+        //         } else {
+        //             alert('Введите данные корректно!');
+        //             this.data();
+        //         }
                 
-            }
-            getInfo()   {
-                console.log({
-                    name: this.name,
-                    surname: this.surname,
-                    age: this.age
-                });
-            }
-        }
+        //     }
+        //     getInfo()   {
+        //         console.log({
+        //             name: this.name,
+        //             surname: this.surname,
+        //             age: this.age
+        //         });
+        //     }
+        // }
 
-        class Auto {
-            constructor() {
-                this.brandAuto;
-                this.yearOfIssue;
-                this.driver;
-            }
-            data(){
-                let brandAuto = prompt('Введите марку авто'),
-                    yearOfIssue = +prompt('Введите год выпуска авто числом в формате: 1999'); 
-                if(typeof(brandAuto) === 'string' && brandAuto.length > 0 && brandAuto !== null && yearOfIssue > 1880 && yearOfIssue < 2023 && yearOfIssue !== NaN) {
-                    this.brandAuto = brandAuto;
-                    this.yearOfIssue = yearOfIssue;
-                } else {
-                    alert('Введите данные корректно!');
-                    this.data();
-                }
-            }
-            getInfo() {
-                console.log({
-                    brandAuto: this.brandAuto,
-                    yearOfIssue: this.yearOfIssue,
-                    driver: this.driver
-                });
-            }
-            setDriver(driver) {
-                if(driver.age >= 18) {
-                    this.driver = driver;
-                } else {
-                    console.log('Водителю меньше 18!')
-                }
-            }
-        }
+        // class Auto {
+        //     constructor() {
+        //         this.brandAuto;
+        //         this.yearOfIssue;
+        //         this.driver;
+        //     }
+        //     data(){
+        //         let brandAuto = prompt('Введите марку авто'),
+        //             yearOfIssue = +prompt('Введите год выпуска авто числом в формате: 1999'); 
+        //         if(typeof(brandAuto) === 'string' && brandAuto.length > 0 && brandAuto !== null && yearOfIssue > 1880 && yearOfIssue < 2023 && yearOfIssue !== NaN) {
+        //             this.brandAuto = brandAuto;
+        //             this.yearOfIssue = yearOfIssue;
+        //         } else {
+        //             alert('Введите данные корректно!');
+        //             this.data();
+        //         }
+        //     }
+        //     getInfo() {
+        //         console.log({
+        //             brandAuto: this.brandAuto,
+        //             yearOfIssue: this.yearOfIssue,
+        //             driver: this.driver
+        //         });
+        //     }
+        //     setDriver(driver) {
+        //         if(driver.age >= 18) {
+        //             this.driver = driver;
+        //         } else {
+        //             console.log('Водителю меньше 18!')
+        //         }
+        //     }
+        // }
 
-        let human = new Human();
-        human.data();
-        human.getInfo();
-        let auto = new Auto();
-        auto.data();
-        auto.getInfo();
-        auto.setDriver(human);
-        auto.getInfo();
+        // let human = new Human();
+        // human.data();
+        // human.getInfo();
+        // let auto = new Auto();
+        // auto.data();
+        // auto.getInfo();
+        // auto.setDriver(human);
+        // auto.getInfo();
 
 
 // ДЗ 16. Гамбургеры
@@ -232,7 +258,7 @@
     //     }
 
     //     getAge(){
-    //         return 2022 - this.yearOfBirth;
+    //         return new Date().toLocaleString().slice(6,10) - this.yearOfBirth;
     //     }
 
     //     getAverageRating() {
@@ -263,9 +289,8 @@
     //         }
     //     }
 
-    //     summary() {
-    //         let averageRating = this.getAverageRating(),
-    //             attendedClasses = 0,
+    //     getAverageAttended(){
+    //         let attendedClasses = 0,
     //             numberOfLessons = 0;
     //         this.attendance.forEach(elem => {
     //             if(elem === true){
@@ -275,14 +300,13 @@
     //                 numberOfLessons++;
     //             }
     //         });
+    //         return attendedClasses / numberOfLessons
+    //     }
 
-    //         let averageAttended = attendedClasses / numberOfLessons;
-    //         console.log(averageRating);
-    //         console.log(averageAttended);
-
-    //         if(averageRating >= 90 && averageAttended >= 0.9) {
+    //     summary() {
+    //         if(this.getAverageRating() >= 90 && this.getAverageAttended() >= 0.9) {
     //             console.log('Молодец!');
-    //         } else if(averageRating >= 90 && averageAttended <= 0.9 || averageRating <= 90 && averageAttended >= 0.9 ){
+    //         } else if(this.getAverageRating() >= 90 && this.getAverageAttended() <= 0.9 || this.getAverageRating() <= 90 && this.getAverageAttended() >= 0.9 ){
     //             console.log('Хорошо, но можно лучше!');
     //         } else {
     //             console.log('Редиска!');
