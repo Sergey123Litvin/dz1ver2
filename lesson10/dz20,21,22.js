@@ -2,16 +2,16 @@
     // Имеется текстовое поле на странице. При фокусировке на этом поле сбоку появляется <div> с информацией. 
     // При пропаже фокуса - <div> так же пропадает
 
-    // let input = [...document.getElementsByTagName('input')];
+    let input = [...document.getElementsByTagName('input')];
 
-    // let div = document.createElement('div');
-    // div.innerText = 'Это описание input';
+    let div = document.createElement('div');
+    div.innerText = 'Это описание input';
 
-    // const addDiv = () => document.body.append(div);
-    // const removeDiv = () => document.body.removeChild(div);
+    const addDiv = () => document.body.append(div);
+    const removeDiv = () => document.body.removeChild(div);
 
-    // input[0].addEventListener('mouseover', addDiv);
-    // input[0].addEventListener('mouseout', removeDiv);
+    input[0].addEventListener('focus', addDiv);
+    input[0].addEventListener('blur', removeDiv);
 
 // ДЗ 21. Таблица
     // Вывести таблицу 10 × 10, заполненную числами от 1 до 100 (таблица создаётся динамически)
@@ -35,9 +35,9 @@
     // В папке images есть изображения 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg, 7.jpg, 8.jpg, 9.jpg. 
     // Вывести изображение из этой папки полученное случайным образом (Math.random)
 
-    let random = Math.floor(Math.random() * (10 - 1)) + 1;
-    let div = document.createElement('div');
-    let img = document.createElement('img');
-    img.setAttribute('src', `lesson10/img/${random}.jpg`);
-    div.appendChild(img);
-    document.body.appendChild(div);
+    // let random = Math.floor(Math.random() * (10 - 1)) + 1;
+    // let div = document.createElement('div');
+    // let img = document.createElement('img');
+    // img.setAttribute('src', `lesson10/img/${random}.jpg`);
+    // div.appendChild(img);
+    // document.body.appendChild(div);
