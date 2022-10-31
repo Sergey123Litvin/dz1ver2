@@ -58,21 +58,35 @@
           }
         }
 
-        shareDrink() {
-          return {
-            firstDrinkCoffee: this.coffee / 2,
-            firstDrinkVolume: this.volume / 2,
-            firstDrinkCoast: this.#coast / 2,
-            firstDrinkSugar: this.#sugar / 2,
-            firstDrinkWater: this.water / 2,
-            firstDrinkMilk: this.milk / 2,
-            secondDrinkCoffee: this.coffee / 2,
-            secondDrinkVolume: this.volume / 2,
-            secondDrinkCoast: this.#coast / 2,
-            secondDrinkSugar: this.#sugar / 2,
-            secondDrinkWater: this.water / 2,
-            secondDrinkMilk: this.milk / 2,
+        shareDrink () {
+          let secondDrink;
+          
+          if(this.constructor.name == 'CoffeeRecept') {
+            secondDrink = new CoffeeRecept();
+          } else if(this.constructor.name == 'EspressoRecept') {
+            secondDrink = new EspressoRecept();
+          } else if(this.constructor.name == 'AmericanoRecept') {
+            secondDrink = new AmericanoRecept(0);
+          } else if(this.constructor.name == 'LatteRecept') {
+            secondDrink = new LatteRecept(0);
+          } else if(this.constructor.name == 'DoubleLatteRecept') {
+            secondDrink = new DoubleLatteRecept();
           }
+
+          secondDrink.#coast = this.#coast / 2;  
+          secondDrink.#sugar = this.#sugar / 2;
+          secondDrink.volume = this.volume / 2;
+          secondDrink.coffee = this.coffee / 2;
+          secondDrink.water = this.water / 2;
+          secondDrink.milk = this.milk / 2;
+
+          this.#coast = this.#coast / 2;  
+          this.#sugar = this.#sugar / 2;
+          this.volume = this.volume / 2;
+          this.coffee = this.coffee / 2;
+          this.water = this.water / 2;
+          this.milk = this.milk / 2;
+          return secondDrink;
         }
       }
       
@@ -160,12 +174,11 @@
         }
       }
       
-
-      let espresso = new EspressoRecept();
-      console.log(espresso.getInfo());
-      espresso.setSugar(3);
-      console.log(espresso.getInfo());
-      console.log(new Cup(espresso));
+      // let espresso = new EspressoRecept();
+      // console.log(espresso.getInfo());
+      // espresso.setSugar(3);
+      // console.log(espresso.getInfo());
+      // console.log(new Cup(espresso));
 
       let americano = new AmericanoRecept(20);
       console.log(americano);
@@ -173,4 +186,21 @@
       americano.addWater(110);
       console.log(americano.getInfo());
       console.log(new Cup(americano));
-      console.log(americano.shareDrink());
+     
+      let secondDrink = americano.shareDrink();
+      console.log(americano.getInfo());
+      secondDrink.addSugar();
+      console.log(secondDrink.getInfo());
+
+
+
+
+
+
+
+
+
+
+
+
+ 
