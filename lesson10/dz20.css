@@ -1,0 +1,17 @@
+form {
+    display:inline-block;
+    margin-top: 50px;
+}
+div {
+    display:inline-block;
+    color: red;
+    margin-left: 30px;
+} 
+
+/* div {
+    width: 250px;
+    margin: 0 auto;
+}
+img {
+    width: 100%;
+} */
