@@ -129,7 +129,6 @@ function renderLi(parentEvent, index) {
 function validateInputLi(e) {
     if(/^[ ,.a-zA-Z0-9а-яА-ЯёЁ]+$/.test(e.target.value) || e.target.value.length === 0) {//Разрешено вводить: цифры, латиницу и кирилицу любого регестра, символы только точка и запятая, пробел. Вторая часть решает баг (если ввести значение а затем все удалить, то получим false).
         alertSpan.innerText = '';
-        alertSpan.innerText = '';
         saveEditLi.addEventListener('click', saveLi);
     } else {
         alertSpan.innerText = 'Invalid value!';
