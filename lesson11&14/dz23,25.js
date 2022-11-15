@@ -1,5 +1,5 @@
 // ДЗ 23. Todo list pure js
-
+// ДЗ 25. Local storage
 let statusItems = [];
 
 const todoListContainer = document.querySelector('#todoListContainer');
@@ -24,6 +24,16 @@ clearAllList.addEventListener('click', clearAll);
 
 const ulList = document.createElement('ul');
 todoListContainer.appendChild(ulList);
+
+
+statusItems = JSON.parse(localStorage.getItem('statusItemsJson'));    
+for(let i = 0; i < statusItems.length; i++) {
+    const liItem = document.createElement('li');
+    liItem.id = statusItems[i].id;
+    ulList.appendChild(liItem);
+    renderLi(liItem, i);
+}
+
 
 function validate(e) {
     if(/^[ ,.a-zA-Z0-9а-яА-ЯёЁ]+$/.test(e.target.value) || e.target.value.length === 0) {//Разрешено вводить: цифры, латиницу и кирилицу любого регестра, символы только точка и запятая, пробел. Вторая часть решает баг (если ввести значение а затем все удалить, то получим false).
@@ -136,4 +146,8 @@ function validateInputLi(e) {
     }
 }
 
+window.onbeforeunload = () => {
+    let statusItemsJson = JSON.stringify(statusItems);
+    localStorage.setItem('statusItemsJson', statusItemsJson);
+};
 
