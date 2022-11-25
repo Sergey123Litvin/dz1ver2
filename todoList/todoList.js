@@ -70,7 +70,7 @@ todoListContainer.appendChild(ulList);
 
 function loadingPosts(colPosts) {
     for(let i = 1; i <= colPosts; i++) {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${i}`)
+        fetch(`https://jsonplaceholder.typicode.com/todos/${i}`)
             .then((response) => {
                 if(!response.ok){
                     throw new Error(response.status);
@@ -78,20 +78,19 @@ function loadingPosts(colPosts) {
                 return response.json();
             })
             .then((json) => {
-                json.checked = false;
                 json.editable = false;
+                json.completed = false;
                 statusItems.push(json);
-                
                 renderLastItem();
             })
             .catch(error => errorMassage(error.message))
     }
 }
 
-statusItems = JSON.parse(localStorage.getItem('statusItemsJson'));
-if(statusItems.length == 0) {
+if(localStorage.getItem('statusItemsJson') == null) {
     loadingPosts(20);
 }else{
+    statusItems = JSON.parse(localStorage.getItem('statusItemsJson'));
     renderAllListItem();
 }
 
@@ -136,12 +135,11 @@ function addLi() {
 }
 
 function createLiElem() {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch('https://jsonplaceholder.typicode.com/users/1/todos', {
         method: 'POST',
         body: JSON.stringify({
           title: inputList.value,
-          body: inputList.value,
-          checked: false,
+          completed: false,
           editable: false,
         }),
         headers: {
@@ -164,8 +162,8 @@ function createLiElem() {
 }
 
 function removeLi(e) {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
+    fetch(`https://jsonplaceholder.typicode.com/todos/${e.target.parentNode.id}`, {
+        method: 'DELETE',
         body: JSON.stringify({
           removeItemId: e.target.parentNode.id,
         }),
@@ -184,7 +182,7 @@ function removeLi(e) {
 }
 
 function checkedLi(e) {
-    statusItems[statusItems.findIndex(item => item.id == e.target.parentNode.id)].checked = e.target.checked;
+    statusItems[statusItems.findIndex(item => item.id == e.target.parentNode.id)].completed = e.target.checked;
 }
 
 const alertSpan = document.createElement('span');
@@ -217,8 +215,8 @@ function saveLi(e) {
     if(parentEvent.firstChild.value === ''){
         alertSpan.innerText = 'Enter value!';
     } else {
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
+        fetch(`https://jsonplaceholder.typicode.com/todos/${e.target.parentNode.id}`, {
+        method: 'PUT',
         body: JSON.stringify({
           saveLiIndex: index,
         }),
@@ -241,7 +239,7 @@ function saveLi(e) {
 function renderLi(arr, parentEvent, index) {
     const checkboxItem = document.createElement('input');
     checkboxItem.type = 'checkbox';
-    checkboxItem.checked = arr[index].checked;
+    checkboxItem.checked = arr[index].completed;
     checkboxItem.addEventListener('change', checkedLi);
     const span = document.createElement('span');
     span.innerText = arr[index].title;
@@ -278,7 +276,7 @@ function updateList() {
 function searchListItem() {
         const searchArray = [];
         for(let i = 0; i < statusItems.length; i++) {
-            if(statusItems[i].title.includes(`${searchInput.value}`)) {
+            if(statusItems[i].title.includes(searchInput.value)) {
                 searchArray.push(statusItems[i]);
             }
         }
@@ -311,7 +309,7 @@ function errorMassageItem(span, massage) {
 }
 
 function getInfoItem(e) {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${e.target.parentNode.id}`)
+    fetch(`https://jsonplaceholder.typicode.com/todos/${e.target.parentNode.id}`)
         .then(response => {
             if(!response.ok){
                 throw new Error(response.status);
@@ -320,7 +318,7 @@ function getInfoItem(e) {
         })
         .then(json => {
             if(e.target.parentNode.childNodes[2].innerText == '') {
-                e.target.parentNode.childNodes[2].innerText = `   id = ${json.id} body = ${json.body.slice(0, 15)} ...`;
+                e.target.parentNode.childNodes[2].innerText = `   id = ${json.id} userId = ${json.userId}`;
                 e.target.parentNode.childNodes[2].style = 'color: green;';
             }else{
                 e.target.parentNode.childNodes[2].innerText = '';
