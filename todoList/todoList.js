@@ -185,18 +185,17 @@ function checkedLi(e) {
     statusItems[statusItems.findIndex(item => item.id == e.target.parentNode.id)].completed = e.target.checked;
 }
 
-const alertSpan = document.createElement('span');
-const saveEditLi = document.createElement('button');
-
 function editLi(e) {
     const parentEvent =  e.target.parentNode;
     parentEvent.innerHTML = '';
     const inputEditLi = document.createElement('input');
     inputEditLi.value = statusItems[statusItems.findIndex(item => item.id == parentEvent.id)].title;
     inputEditLi.addEventListener('input', validateInputLi);
+    const saveEditLi = document.createElement('button');
     saveEditLi.innerText = 'Save';
     saveEditLi.addEventListener('click', saveLi);
     const cancelEditLi = document.createElement('button');
+    const alertSpan = document.createElement('span');
     cancelEditLi.innerText = 'Cancel';
     cancelEditLi.addEventListener('click', cancelLi);
     parentEvent.append(inputEditLi, alertSpan, saveEditLi, cancelEditLi);
@@ -213,7 +212,7 @@ function saveLi(e) {
     const index = statusItems.findIndex(item => item.id == e.target.parentNode.id);
     parentEvent = e.target.parentNode;
     if(parentEvent.firstChild.value === ''){
-        alertSpan.innerText = 'Enter value!';
+        e.target.parentNode.childNodes[1].innerText = 'Enter value!';
     } else {
         fetch(`https://jsonplaceholder.typicode.com/todos/${e.target.parentNode.id}`, {
         method: 'PUT',
@@ -257,11 +256,11 @@ function renderLi(arr, parentEvent, index) {
 
 function validateInputLi(e) {
     if(/^[ ,.a-zA-Z0-9а-яА-ЯёЁ]+$/.test(e.target.value) || e.target.value.length === 0) {//Разрешено вводить: цифры, латиницу и кирилицу любого регестра, символы только точка и запятая, пробел. Вторая часть решает баг (если ввести значение а затем все удалить, то получим false).
-        alertSpan.innerText = '';
-        saveEditLi.addEventListener('click', saveLi);
+        e.target.parentNode.childNodes[1].innerText = '';
+        e.target.parentNode.childNodes[2].addEventListener('click', saveLi);
     } else {
-        alertSpan.innerText = 'Invalid value!';
-        saveEditLi.removeEventListener('click', saveLi);
+        e.target.parentNode.childNodes[1].innerText = 'Invalid value!';
+        e.target.parentNode.childNodes[2].removeEventListener('click', saveLi);
     }
 }
 
