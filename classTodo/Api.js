@@ -4,10 +4,6 @@ class Api {
     constructor() {
     }
 
-    modifyData(item) {
-        return {text: item.title, checked: item.completed, id: item.id,editable: false};
-    }
-
     static async getTodos(user) {
         try{
             const data = await fetch(`https://jsonplaceholder.typicode.com/users/${user}/todos`);
