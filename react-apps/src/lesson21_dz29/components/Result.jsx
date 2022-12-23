@@ -1,8 +1,9 @@
 import { Component } from "react";
+import smile from "./arraySmile";
 
 class Result extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             showResult: false
         }
@@ -13,8 +14,8 @@ class Result extends Component {
     }
 
     getWinner = () => {
-        let sortArr = this.props.arrSmile.sort((a, b) => b.counter - a.counter)
-        let div = <div>победитель: {sortArr[0].title}, голосов: {sortArr[0].counter}</div>
+        let winner = [].concat(smile).sort((a, b) => b.counter - a.counter)
+        let div = <div>победитель: {winner[0].title}, голосов: {winner[0].counter}</div>
         if(this.state.showResult){
             return div
         }

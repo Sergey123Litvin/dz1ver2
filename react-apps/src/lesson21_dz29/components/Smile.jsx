@@ -1,19 +1,20 @@
 import { Component } from "react";
 import styles from "./smile.css";
+import smile from "./arraySmile";
 
 class Smile extends Component {
     constructor(props) {
         super();
     }            
 
-    click = () => {
-        this.props.smile[this.props.idx].counter ++
+    handleClick = () => {
+        smile[this.props.idx].counter ++
     }
 
     render() {
         return (
         <>
-            <div className="smile" onClick = {this.click}>{this.props.title}</div>
+            <div className="styleItem" onClick = {this.handleClick}>{this.props.title}</div>
         </>
         )
     }
